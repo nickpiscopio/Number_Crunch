@@ -5,4 +5,193 @@
     android:padding="@dimen/margins"
     android:orientation="vertical">
 
+    <!-- Score Layout -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/title_score"
+                style="@style/text_bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="100"
+                android:id="@+id/textView_score"
+                android:textColor="@color/secondary"
+                style="@style/text_normal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/title_time"
+                style="@style/text_bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="5:00"
+                android:id="@+id/textView_time"
+                android:textColor="@color/accent"
+                style="@style/text_normal"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Numbers' Layout -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:text="1"
+            style="@style/number"/>
+
+        <Button
+            android:text="2"
+            style="@style/number"/>
+
+        <Button
+            android:text="3"
+            style="@style/number"/>
+
+        <Button
+            android:text="4"
+            style="@style/number"/>
+
+    </LinearLayout>
+
+    <!-- Operators' Layout -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/stroke"
+            android:layout_weight="1"/>
+
+        <Button
+            android:text="+"
+            style="@style/operator"/>
+
+        <Button
+            android:text="X"
+            style="@style/operator"/>
+
+        <Button
+            android:text="/"
+            style="@style/operator"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/stroke"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/stroke"
+        android:layout_marginTop="@dimen/margins"
+        android:layout_marginBottom="@dimen/margins"
+        android:background="@color/primary"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:id="@+id/answer"
+            android:orientation="vertical"
+            style="@style/target">
+
+            <TextView
+                android:id="@+id/textView_answer_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Correct!"
+                android:textSize="@dimen/text_target_title"
+                android:layout_marginTop="@dimen/target_title_margin"
+                style="@style/text"/>
+
+            <TextView
+                android:id="@+id/textView_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_target"
+                android:text="5"
+                android:layout_marginTop="@dimen/target_margin_top"
+                android:layout_marginBottom="@dimen/target_margin_bottom"
+                style="@style/text_bold"/>
+
+            <TextView
+                android:id="@+id/textView_answer_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Next in..."
+                android:textSize="@dimen/text_peek"
+                android:textColor="@color/secondary"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/target"
+            android:orientation="vertical"
+            style="@style/target">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/target"
+                android:textSize="@dimen/text_target_title"
+                android:layout_marginTop="@dimen/target_title_margin"
+                style="@style/text"/>
+
+            <TextView
+                android:id="@+id/textView_target"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_target"
+                android:text="24"
+                android:layout_marginTop="@dimen/target_margin_top"
+                android:layout_marginBottom="@dimen/target_margin_bottom"
+                style="@style/text_bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/peek"
+                android:textSize="@dimen/text_peek"
+                android:textColor="@color/secondary"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
 </LinearLayout>
