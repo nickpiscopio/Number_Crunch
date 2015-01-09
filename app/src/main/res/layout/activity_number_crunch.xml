@@ -125,84 +125,71 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true">
+        <LinearLayout
+            android:orientation="vertical"
+            style="@style/target">
 
-            <LinearLayout
-                android:orientation="vertical"
-                style="@style/target">
+            <TextView
+                android:id="@+id/textView_answer_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Correct!"
+                android:textSize="@dimen/text_target_title"
+                android:layout_marginTop="@dimen/target_title_margin"
+                style="@style/text"/>
 
-                <TextView
-                    android:id="@+id/textView_answer_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Correct!"
-                    android:textSize="@dimen/text_target_title"
-                    android:layout_marginTop="@dimen/target_title_margin"
-                    style="@style/text"/>
+            <TextView
+                android:id="@+id/textView_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_target"
+                android:text="5"
+                android:layout_marginTop="@dimen/target_margin_top"
+                android:layout_marginBottom="@dimen/target_margin_bottom"
+                style="@style/text_bold"/>
 
-                <TextView
-                    android:id="@+id/textView_answer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_target"
-                    android:text="5"
-                    android:layout_marginTop="@dimen/target_margin_top"
-                    android:layout_marginBottom="@dimen/target_margin_bottom"
-                    style="@style/text_bold"/>
+            <TextView
+                android:id="@+id/textView_answer_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Next in..."
+                android:textSize="@dimen/text_peek"
+                android:textColor="@color/secondary"/>
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textView_answer_description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Next in..."
-                    android:textSize="@dimen/text_peek"
-                    android:textColor="@color/secondary"/>
-            </LinearLayout>
-
-        </RelativeLayout>
-
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/target"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true">
+            android:orientation="vertical"
+            style="@style/target">
 
-            <LinearLayout
-                android:orientation="vertical"
-                style="@style/target">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/target"
+                android:textSize="@dimen/text_target_title"
+                android:layout_marginTop="@dimen/target_title_margin"
+                style="@style/text"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/target"
-                    android:textSize="@dimen/text_target_title"
-                    android:layout_marginTop="@dimen/target_title_margin"
-                    style="@style/text"/>
+            <TextView
+                android:id="@+id/textView_target"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_target"
+                android:text="24"
+                android:layout_marginTop="@dimen/target_margin_top"
+                android:layout_marginBottom="@dimen/target_margin_bottom"
+                style="@style/text_bold"/>
 
-                <TextView
-                    android:id="@+id/textView_target"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_target"
-                    android:text="24"
-                    android:layout_marginTop="@dimen/target_margin_top"
-                    android:layout_marginBottom="@dimen/target_margin_bottom"
-                    style="@style/text_bold"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/peek"
-                    android:textSize="@dimen/text_peek"
-                    android:textColor="@color/secondary"/>
-            </LinearLayout>
-
-        </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/peek"
+                android:textSize="@dimen/text_peek"
+                android:textColor="@color/secondary"/>
+        </LinearLayout>
 
     </RelativeLayout>
 

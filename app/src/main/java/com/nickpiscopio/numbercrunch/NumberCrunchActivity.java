@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 /**
@@ -16,7 +17,7 @@ public class NumberCrunchActivity extends ActionBarActivity
     private final int ANIMATION_DURATION = 500;
     private final int HIDE_ANSWER_DURATION = 3000;
 
-    private RelativeLayout target;
+    private LinearLayout target;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -24,7 +25,7 @@ public class NumberCrunchActivity extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_crunch);
 
-        target = (RelativeLayout)findViewById(R.id.target);
+        target = (LinearLayout)findViewById(R.id.target);
         target.setOnTouchListener(targetListener);
     }
 
@@ -49,7 +50,7 @@ public class NumberCrunchActivity extends ActionBarActivity
                         @Override
                         public void run()
                         {
-                            animateView(v, distanceToMove, 0/*(int) prevX*/);
+                            animateView(v, distanceToMove, 0);
                         }
                     }, HIDE_ANSWER_DURATION + ANIMATION_DURATION);
 
