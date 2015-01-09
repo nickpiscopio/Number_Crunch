@@ -19,4 +19,40 @@
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
+    <style name="number" parent="text_bold">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/number</item>
+        <item name="android:textColor">@color/fourth</item>
+        <item name="android:textSize">@dimen/text_extra_large</item>
+        <item name="android:layout_marginLeft">@dimen/number_margin</item>
+        <item name="android:layout_marginRight">@dimen/number_margin</item>
+        <item name="android:paddingTop">@dimen/number_padding</item>
+        <item name="android:paddingBottom">@dimen/number_padding</item>
+    </style>
+
+    <style name="operator">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/operator</item>
+        <!-- This can be removed later because it will be an image -->
+        <item name="android:textColor">@color/fourth</item>
+        <item name="android:textSize">@dimen/text_normal</item>
+        <!-- End remove -->
+        <item name="android:layout_marginLeft">@dimen/operator_margin</item>
+        <item name="android:layout_marginRight">@dimen/operator_margin</item>
+        <item name="android:paddingTop">@dimen/operator_padding</item>
+        <item name="android:paddingBottom">@dimen/operator_padding</item>
+    </style>
+
+    <style name="target" parent="text_bold">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/target</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:padding">@dimen/number_padding</item>
+    </style>
+
 </resources>

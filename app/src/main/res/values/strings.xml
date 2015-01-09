@@ -13,4 +13,10 @@
     <string name="about_created_by">Nick Piscopio</string>
     <string name="copyright">&#169; 2015. All Rights Reserved. Number Crunch</string>
 
+    <string name="title_score">Score</string>
+    <string name="title_time">Time</string>
+    
+    <string name="target">Target</string>
+    <string name="peek">Slide to peek ></string>
+
 </resources>
