@@ -3,7 +3,9 @@ package com.nickpiscopio.numbercrunch;
 import android.os.Bundle;
 
 /**
- * Created by nickpiscopio on 1/6/15.
+ * The About activity for Number Crunch.
+ *
+ * Created by Nick Piscopio on January 6, 2015.
  */
 public class AboutActivity extends BaseActivity
 {

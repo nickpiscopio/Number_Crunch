@@ -8,6 +8,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * The main activity for Number Crunch.
+ *
+ * Created by Nick Piscopio on January 6, 2015.
+ */
 public class MainActivity extends ActionBarActivity
 {
     private final int ID_PLAY = R.id.button_play;
@@ -30,7 +35,7 @@ public class MainActivity extends ActionBarActivity
     }
 
     /**
-     * A listener for the buttons.
+     * The listener for the buttons.
      */
     private View.OnClickListener buttonListener = new View.OnClickListener()
     {
@@ -40,11 +45,17 @@ public class MainActivity extends ActionBarActivity
             switch (v.getId())
             {
                 case ID_PLAY:
+
                     startActivity(NumberCrunchActivity.class);
+
                     break;
+
                 case ID_HIGH_SCORE:
+
                     startActivity(HighScoreActivity.class);
+
                     break;
+
                 default:
                     break;
             }
@@ -54,7 +65,6 @@ public class MainActivity extends ActionBarActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
@@ -62,12 +72,8 @@ public class MainActivity extends ActionBarActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_about)
         {
             startActivity(AboutActivity.class);
@@ -81,11 +87,11 @@ public class MainActivity extends ActionBarActivity
     /**
      * Starts a designated activity.
      *
-     * @param myClass   The class to start.
+     * @param destination   The class to start.
      */
-    private void startActivity(Class myClass)
+    private void startActivity(Class destination)
     {
-        Intent intent = new Intent(MainActivity.this, myClass);
+        Intent intent = new Intent(MainActivity.this, destination);
         startActivity(intent);
     }
 }

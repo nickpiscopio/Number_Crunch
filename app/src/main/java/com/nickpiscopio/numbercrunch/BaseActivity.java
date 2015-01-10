@@ -5,7 +5,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 
 /**
- * Created by nickpiscopio on 1/6/15.
+ * The parent class for the activities with Action Bars.
+ *
+ * Created by Nick Piscopio on January 6, 2015.
  */
 public class BaseActivity extends ActionBarActivity
 {
@@ -23,7 +25,9 @@ public class BaseActivity extends ActionBarActivity
         switch (item.getItemId())
         {
             case android.R.id.home:
+
                 finish();
+
                 return true;
         }
 

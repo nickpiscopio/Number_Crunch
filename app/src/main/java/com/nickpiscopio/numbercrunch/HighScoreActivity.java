@@ -3,7 +3,9 @@ package com.nickpiscopio.numbercrunch;
 import android.os.Bundle;
 
 /**
- * Created by nickpiscopio on 1/6/15.
+ * The High Score activity for Number Crunch.
+ *
+ * Created by Nick Piscopio on January 6, 2015.
  */
 public class HighScoreActivity extends BaseActivity
 {
