@@ -333,8 +333,6 @@ public class NumberCrunchActivity extends ActionBarActivity implements OperatorF
                                     timer.cancel();
 
                                     generateNewGame();
-
-
                                 }
                             }
                         });
