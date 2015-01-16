@@ -19,6 +19,18 @@
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
+    <style name="text_alternate">
+        <item name="android:textColor">@color/fourth</item>
+    </style>
+
+    <style name="text_alternate_bold" parent="text_alternate">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_alternate_normal" parent="text_alternate">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
     <style name="number_target">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -62,7 +74,6 @@
     <style name="target" parent="text_bold">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/target</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:padding">@dimen/number_padding</item>
     </style>

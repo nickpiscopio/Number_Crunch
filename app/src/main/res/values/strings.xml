@@ -19,4 +19,8 @@
     <string name="target">Target</string>
     <string name="peek">Slide to peek ></string>
 
+    <string name="title_answer_correct">Correct!</string>
+    <string name="title_answer_incorrect">Incorrect</string>
+    <string name="description_answer_correct">Next in %1$d...</string>
+
 </resources>

@@ -119,6 +119,43 @@ public class Arithmetic
         return tempAnswer;
     }
 
+    public static int calculate(Operator operator, int value1, int value2)
+    {
+        int tempAnswer = 0;
+
+        switch (operator)
+        {
+            case ADD:
+
+                tempAnswer = value1 + value2;
+
+                break;
+
+            case DIVIDE:
+
+                tempAnswer = value1 / value2;
+
+                break;
+
+            case MULTIPLY:
+
+                tempAnswer = value1 * value2;
+
+                break;
+
+            case SUBTRACT:
+
+                tempAnswer = value1 - value2;
+
+                break;
+
+            default:
+                break;
+        }
+
+        return tempAnswer;
+    }
+
     /**
      * Generates a random number between two values.
      *
