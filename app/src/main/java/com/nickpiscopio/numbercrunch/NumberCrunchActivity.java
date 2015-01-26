@@ -4,16 +4,19 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -28,7 +31,7 @@ public class NumberCrunchActivity extends ActionBarActivity implements OperatorF
     private final int ANIMATION_DURATION = 500;
     private final int HIDE_ANSWER_DURATION = 3000;
     private final int NUMBERS_TO_GENERATE = 4;
-    private final float SNAP_DISTANCE = 50;
+    private final float SNAP_DISTANCE = 75;
     private final int ONE_SECOND = 1000;
     private final int ITERATION_TO_NEXT = 3;
 
@@ -169,100 +172,181 @@ public class NumberCrunchActivity extends ActionBarActivity implements OperatorF
             target3 = numberTarget3.getX();
             target4 = numberTarget4.getX();
 
+            float pointerX = 0;
+
             switch(event.getAction())
             {
                 case MotionEvent.ACTION_MOVE:
 
-                    float pointerX = event.getRawX() - ((width / 2) + (width / 4));
+                    pointerX = event.getRawX() - ((width / 2) + (width / 4));
 
                     v.setX(pointerX);
+
+//                    Log.i("pointerX: ", String.valueOf(pointerX));
+//
+//                    Log.i("target1: ", String.valueOf(target1));
+//                    Log.i("target2: ", String.valueOf(target2));
+//                    Log.i("target3: ", String.valueOf(target3));
+//                    Log.i("target4: ", String.valueOf(target4));
 
                     if ((pointerX - target1) < SNAP_DISTANCE)
                     {
 
 
                         int buttonIndex = 0;
-
-//                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
-
+////
+////                        //                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
+////
                         Button number = numbers.get(buttonIndex);
-//                        animateView(number, number.getX(), prevX);
-                        number.setX(prevX);
+////                        float numberX = number.getX();
+                        animateView(number, number.getX(), prevX);
+//                        number.setX(prevX);
                         v.setX(target1);
 
-
+                        Log.i("number.getX(): ", String.valueOf(number.getX()));
+                        Log.i("prevX: ", String.valueOf(prevX));
+////
                         Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
+                        prevX = target1;
 
-//                        Log.i("prevX: ", String.valueOf(prevX));
+                        //                        Log.i("prevX: ", String.valueOf(prevX));
 
-//                        Log.i("numbers: ", numbers.toString());
+                        //                        Log.i("numbers: ", numbers.toString());
 
-//                        numbers.remove(index);
-//                        numbers.add(0, (Button)v);
+                        //                        numbers.remove(index);
+                        //                        numbers.add(0, (Button)v);
                     }
-                    else if ((pointerX - target2) < SNAP_DISTANCE)
+                    else if (Math.abs(pointerX - target2) < SNAP_DISTANCE)
                     {
-
-
                         int buttonIndex = 1;
-
-//                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
-
+//
+//                        //                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
+//
                         Button number = numbers.get(buttonIndex);
-//                        animateView(number, number.getX(), prevX);
+//                        //                        animateView(number, number.getX(), prevX);
                         number.setX(prevX);
                         v.setX(target2);
-
-
+//
+//
                         Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
 
-//                        numbers.remove(index);
-//                        numbers.add(1, (Button)v);
+                        prevX = target2;
+
+                        //                        numbers.remove(index);
+                        //                        numbers.add(1, (Button)v);
                     }
-                    else if ((pointerX - target3) < SNAP_DISTANCE)
+                    else if (Math.abs(pointerX - target3) < SNAP_DISTANCE)
                     {
-
-
                         int buttonIndex = 2;
-
-//                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
-
+//
+//                        //                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
+//
                         Button number = numbers.get(buttonIndex);
-//                        animateView(number, number.getX(), prevX);
-
+//                        //                        animateView(number, number.getX(), prevX);
+//
                         number.setX(prevX);
                         v.setX(target3);
-
+//
                         Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
 
-//                        numbers.remove(index);
-//                        numbers.add(2, (Button)v);
+                        prevX = target3;
+
+                        //                        numbers.remove(index);
+                        //                        numbers.add(2, (Button)v);
                     }
-                    else if ((pointerX - target4) < SNAP_DISTANCE || pointerX > target4)
+                    else if ((target4 - pointerX) < SNAP_DISTANCE || pointerX > target4)
                     {
                         int buttonIndex = 3;
-
-//                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
-
+//
+//                        //                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
+//
                         Button number = numbers.get(buttonIndex);
-//                        animateView(number, number.getX(), prevX);
+//                        //                        animateView(number, number.getX(), prevX);
                         number.setX(prevX);
                         v.setX(target4);
-
+//
                         Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
 
-//                        numbers.remove(index);
-//                        numbers.add(3, (Button)v);
+                        prevX = target4;
+
+                        //                        numbers.remove(index);
+                        //                        numbers.add(3, (Button)v);
                     }
 
                     return true;
 
-//                case MotionEvent.ACTION_UP:
-//                    return true;
-//
+                case MotionEvent.ACTION_UP:
+
+                    float currX = v.getX();
+
+                    if (currX < target2)
+                    {
+//                        int buttonIndex = 0;
+                        //
+                        //                        //                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
+                        //
+//                        Button number = numbers.get(buttonIndex);
+//                        animateView(number, number.getX(), target2);
+//                        number.setX(prevX);
+                        v.setX(target1);
+                        //
+                        //
+//                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
+//                        v.setX(target1);
+                    }
+                    else if (currX > target2 && currX < target3)
+                    {
+//                        int buttonIndex = 1;
+                        //
+                        //                        //                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
+                        //
+//                        Button number = numbers.get(buttonIndex);
+//                        animateView(number, number.getX(), prevX);
+                        //                        number.setX(prevX);
+                        v.setX(target2);
+                        //
+                        //
+//                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
+                        //                        v.setX(target2);
+                    }
+                    else if (currX > target3 && currX < target4)
+                    {
+//                        int buttonIndex = 2;
+                        //
+                        //                        //                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
+                        //
+//                        Button number = numbers.get(buttonIndex);
+//                        animateView(number, number.getX(), prevX);
+                        //                        number.setX(prevX);
+                        v.setX(target3);
+                        //
+                        //
+//                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
+                        //                        v.setX(target3);
+                    }
+                    else if (currX > target4)
+                    {
+//                        int buttonIndex = 3;
+                        //
+                        //                        //                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
+                        //
+//                        Button number = numbers.get(buttonIndex);
+//                        animateView(number, number.getX(), prevX);
+                        //                        number.setX(prevX);
+                        v.setX(target4);
+                        //
+                        //
+//                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
+                        //                        v.setX(target4);
+                    }
+
+                    return true;
+
                 case MotionEvent.ACTION_DOWN:
 
                     prevX = v.getX();
+//
+//                    Log.i("prevX", String.valueOf(prevX));
 
                     return true;
             }
@@ -338,7 +422,7 @@ public class NumberCrunchActivity extends ActionBarActivity implements OperatorF
                         });
                     }
                 }
-            }, 0, ONE_SECOND);
+            }, ONE_SECOND * ITERATION_TO_NEXT + ONE_SECOND, ONE_SECOND);
 
             textViewAnswerDescription.setVisibility(View.VISIBLE);
         }
@@ -387,6 +471,8 @@ public class NumberCrunchActivity extends ActionBarActivity implements OperatorF
         animation.setDuration(ANIMATION_DURATION);
 
         view.startAnimation(animation);
+
+        Log.i("view x", String.valueOf(view.getX()));
     }
 
     @Override
