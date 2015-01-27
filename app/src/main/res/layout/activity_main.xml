@@ -7,6 +7,22 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginBottom="@dimen/about_description_margin"
+        android:src="@drawable/number_crunch"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/title"
+        android:layout_marginTop="@dimen/about_description_margin"
+        android:layout_marginBottom="@dimen/about_description_margin"
+        style="@style/text_bold"/>
+
     <Button
         android:id="@+id/button_play"
         android:layout_width="match_parent"
@@ -14,7 +30,8 @@
         android:text="@string/title_play"
         android:background="@drawable/button_primary"
         android:textColor="@color/fourth"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"/>
 
     <Button
         android:id="@+id/button_high_scores"

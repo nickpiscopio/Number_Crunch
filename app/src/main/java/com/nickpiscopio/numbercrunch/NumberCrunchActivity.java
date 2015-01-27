@@ -199,7 +199,7 @@ public class NumberCrunchActivity extends ActionBarActivity implements OperatorF
 ////
                         Button number = numbers.get(buttonIndex);
 ////                        float numberX = number.getX();
-                        animateView(number, number.getX(), prevX);
+                        animateView(number, 0, prevX - 8);
 //                        number.setX(prevX);
                         v.setX(target1);
 
@@ -464,11 +464,28 @@ public class NumberCrunchActivity extends ActionBarActivity implements OperatorF
      * @param start     The start position of the view.
      * @param end       The end position of the view.
      */
-    private void animateView(View view, float start, float end)
+    private void animateView(final View view, float start, final float end)
     {
         TranslateAnimation animation = new TranslateAnimation(start, end, 0, 0);
         animation.setFillAfter(true);
         animation.setDuration(ANIMATION_DURATION);
+        animation.setAnimationListener(new Animation.AnimationListener()
+        {
+            @Override public void onAnimationStart(Animation animation)
+            {
+
+            }
+
+            @Override public void onAnimationEnd(Animation animation)
+            {
+                view.setX(end);
+            }
+
+            @Override public void onAnimationRepeat(Animation animation)
+            {
+
+            }
+        });
 
         view.startAnimation(animation);
 
