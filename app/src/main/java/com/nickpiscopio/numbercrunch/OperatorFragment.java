@@ -5,7 +5,8 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.view.Window;
+import android.widget.ImageButton;
 
 /**
  * The fragment for selecting operators.
@@ -35,11 +36,14 @@ public class OperatorFragment extends DialogFragment
     {
         View view = inflater.inflate(R.layout.activity_operator, container);
 
-        // set the custom dialog components - text, image and button
-        Button multiply = (Button) view.findViewById(ID_MULTIPLY);
-        Button divide = (Button) view.findViewById(ID_DIVIDE);
-        Button add = (Button) view.findViewById(ID_ADD);
-        Button subtract = (Button) view.findViewById(ID_SUBTRACT);
+        Window window = getDialog().getWindow();
+        window.requestFeature(Window.FEATURE_NO_TITLE);
+        window.setBackgroundDrawableResource(android.R.color.transparent);
+
+        ImageButton multiply = (ImageButton) view.findViewById(ID_MULTIPLY);
+        ImageButton divide = (ImageButton) view.findViewById(ID_DIVIDE);
+        ImageButton add = (ImageButton) view.findViewById(ID_ADD);
+        ImageButton subtract = (ImageButton) view.findViewById(ID_SUBTRACT);
 
         multiply.setOnClickListener(dialogListener);
         divide.setOnClickListener(dialogListener);

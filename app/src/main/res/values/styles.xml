@@ -57,18 +57,24 @@
     </style>
 
     <style name="operator">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
+        <item name="android:scaleType">centerInside</item>
+
+    </style>
+
+    <style name="operator_target" parent="operator">
+        <item name="android:layout_width">@dimen/operator_target_size</item>
+        <item name="android:layout_height">@dimen/operator_target_size</item>
+        <item name="android:layout_margin">@dimen/operator_margin</item>
+        <item name="android:background">@drawable/operator_blank</item>
+        <item name="android:padding">@dimen/operator_target_padding</item>
+    </style>
+
+    <style name="operator_dialog" parent="operator">
+        <item name="android:layout_width">@dimen/operator_dialog_size</item>
+        <item name="android:layout_height">@dimen/operator_dialog_size</item>
         <item name="android:background">@drawable/operator</item>
-        <!-- This can be removed later because it will be an image -->
-        <item name="android:textColor">@color/fourth</item>
-        <item name="android:textSize">@dimen/text_normal</item>
-        <!-- End remove -->
-        <item name="android:layout_marginLeft">@dimen/operator_margin</item>
-        <item name="android:layout_marginRight">@dimen/operator_margin</item>
-        <item name="android:paddingTop">@dimen/operator_padding</item>
-        <item name="android:paddingBottom">@dimen/operator_padding</item>
+        <item name="android:layout_margin">@dimen/number_margin</item>
+        <item name="android:padding">@dimen/operator_dialog_padding</item>
     </style>
 
     <style name="target" parent="text_bold">

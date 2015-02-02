@@ -129,23 +129,20 @@
             android:layout_height="@dimen/stroke"
             android:layout_weight="1"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/operator_1"
-            android:text="+"
-            style="@style/operator"
-            android:tag="0"/>
+            android:tag="0"
+            style="@style/operator_target"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/operator_2"
-            android:text="X"
-            style="@style/operator"
-            android:tag="1"/>
+            android:tag="1"
+            style="@style/operator_target"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/operator_3"
-            android:text="/"
-            style="@style/operator"
-            android:tag="2"/>
+            android:tag="2"
+            style="@style/operator_target"/>
 
         <View
             android:layout_width="0dp"

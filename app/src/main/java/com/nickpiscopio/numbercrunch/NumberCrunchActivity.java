@@ -1,5 +1,7 @@
 package com.nickpiscopio.numbercrunch;
 
+import android.app.ActionBar;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -47,9 +50,9 @@ public class NumberCrunchActivity extends ActionBarActivity implements OperatorF
     private Button number3;
     private Button number4;
 
-    private Button operator1;
-    private Button operator2;
-    private Button operator3;
+    private ImageButton operator1;
+    private ImageButton operator2;
+    private ImageButton operator3;
 
     private LinearLayout target;
     private LinearLayout answer;
@@ -90,9 +93,9 @@ public class NumberCrunchActivity extends ActionBarActivity implements OperatorF
         number3.setOnTouchListener(numberListener);
         number4.setOnTouchListener(numberListener);
 
-        operator1 = (Button) findViewById(R.id.operator_1);
-        operator2 = (Button) findViewById(R.id.operator_2);
-        operator3 = (Button) findViewById(R.id.operator_3);
+        operator1 = (ImageButton) findViewById(R.id.operator_1);
+        operator2 = (ImageButton) findViewById(R.id.operator_2);
+        operator3 = (ImageButton) findViewById(R.id.operator_3);
 
         operator1.setOnClickListener(operatorListener);
         operator2.setOnClickListener(operatorListener);
@@ -115,6 +118,11 @@ public class NumberCrunchActivity extends ActionBarActivity implements OperatorF
         numbers.add(number4);
 
         operators = new ArrayList<Operator>();
+
+        for(int i = 0; i < 2; i++)
+        {
+            operators.add(null);
+        }
 
         generateNewGame();
     }
@@ -518,43 +526,42 @@ public class NumberCrunchActivity extends ActionBarActivity implements OperatorF
     @Override
     public void onOperatorSelected(int operatorIndex, int operatorId, Operator operator)
     {
-        Button button;
+        ImageButton button = (ImageButton) findViewById(operatorId);
+
+        //Null
+        Operator op = operators.get(operatorIndex);
+        //Breaks on this line because op == null.
+        //Might need to initialize operators with something not null.
+        if (op != null)
+        {
+            button.setBackground(getResources().getDrawable(R.drawable.operator));
+        }
+
+        operators.add(operatorIndex, operator);
 
         switch (operator)
         {
             case MULTIPLY:
 
-                operators.add(operatorIndex, operator);
-
-                button  = (Button) findViewById(operatorId);
-                button.setText("X");
+                button.setImageDrawable(getResources().getDrawable(R.drawable.operator_multiply));
 
                 break;
 
             case DIVIDE:
 
-                operators.add(operatorIndex, operator);
-
-                button  = (Button) findViewById(operatorId);
-                button.setText("/");
+                button.setImageDrawable(getResources().getDrawable(R.drawable.operator_divide));
 
                 break;
 
             case ADD:
 
-                operators.add(operatorIndex, operator);
-
-                button  = (Button) findViewById(operatorId);
-                button.setText("+");
+                button.setImageDrawable(getResources().getDrawable(R.drawable.operator_add));
 
                 break;
 
             case SUBTRACT:
 
-                operators.add(operatorIndex, operator);
-
-                button  = (Button) findViewById(operatorId);
-                button.setText("-");
+                button.setImageDrawable(getResources().getDrawable(R.drawable.operator_subtract));
 
                 break;
 
