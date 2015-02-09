@@ -1,5 +1,6 @@
 package com.nickpiscopio.numbercrunch;
 
+import android.animation.ObjectAnimator;
 import android.app.ActionBar;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -11,11 +12,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -71,6 +74,8 @@ public class NumberCrunchActivity extends ActionBarActivity implements OperatorF
     private float target4;
 
     private float prevX;
+
+    private boolean touching = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -166,6 +171,7 @@ public class NumberCrunchActivity extends ActionBarActivity implements OperatorF
         }
     };
 
+    //This is getting called twice. That is why buttons are moving to 9 instead of 252.
     private View.OnTouchListener numberListener = new View.OnTouchListener()
     {
         @Override
@@ -186,99 +192,102 @@ public class NumberCrunchActivity extends ActionBarActivity implements OperatorF
             {
                 case MotionEvent.ACTION_MOVE:
 
-                    pointerX = event.getRawX() - ((width / 2) + (width / 4));
-
-                    v.setX(pointerX);
-
-//                    Log.i("pointerX: ", String.valueOf(pointerX));
-//
-//                    Log.i("target1: ", String.valueOf(target1));
-//                    Log.i("target2: ", String.valueOf(target2));
-//                    Log.i("target3: ", String.valueOf(target3));
-//                    Log.i("target4: ", String.valueOf(target4));
-
-                    if ((pointerX - target1) < SNAP_DISTANCE)
+                    if(touching)
                     {
+                        pointerX = event.getRawX() - ((width / 2) + (width / 4));
+
+                        v.setX(pointerX);
+
+                        //                    Log.i("pointerX: ", String.valueOf(pointerX));
+                        //
+                        //                    Log.i("target1: ", String.valueOf(target1));
+                        //                    Log.i("target2: ", String.valueOf(target2));
+                        //                    Log.i("target3: ", String.valueOf(target3));
+                        //                    Log.i("target4: ", String.valueOf(target4));
+
+                        if ((pointerX - target1) < SNAP_DISTANCE)
+                        {
 
 
-                        int buttonIndex = 0;
-////
-////                        //                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
-////
-                        Button number = numbers.get(buttonIndex);
-////                        float numberX = number.getX();
-                        animateView(number, 0, prevX - 8);
-//                        number.setX(prevX);
-                        v.setX(target1);
+                            int buttonIndex = 0;
+                            ////
+                            ////                        //                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
+                            ////
+                            Button number = numbers.get(buttonIndex);
+                            ////                        float numberX = number.getX();
+                            animateView(number, 0, prevX);
+                            //                        number.setX(prevX);
+                            v.setX(target1);
 
-                        Log.i("number.getX(): ", String.valueOf(number.getX()));
-                        Log.i("prevX: ", String.valueOf(prevX));
-////
-                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
-                        prevX = target1;
+                            Log.i("number.getX(): ", String.valueOf(number.getX()));
+                            Log.i("prevX: ", String.valueOf(prevX));
+                            ////
+                            Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
+                            prevX = target1;
 
-                        //                        Log.i("prevX: ", String.valueOf(prevX));
+                            //                        Log.i("prevX: ", String.valueOf(prevX));
 
-                        //                        Log.i("numbers: ", numbers.toString());
+                            //                        Log.i("numbers: ", numbers.toString());
 
-                        //                        numbers.remove(index);
-                        //                        numbers.add(0, (Button)v);
-                    }
-                    else if (Math.abs(pointerX - target2) < SNAP_DISTANCE)
-                    {
-                        int buttonIndex = 1;
-//
-//                        //                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
-//
-                        Button number = numbers.get(buttonIndex);
-//                        //                        animateView(number, number.getX(), prevX);
-                        number.setX(prevX);
-                        v.setX(target2);
-//
-//
-                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
+                            //                        numbers.remove(index);
+                            //                        numbers.add(0, (Button)v);
+                        }
+                        else if (Math.abs(pointerX - target2) < SNAP_DISTANCE)
+                        {
+                            int buttonIndex = 1;
+                            //
+                            //                        //                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
+                            //
+                            Button number = numbers.get(buttonIndex);
+                            //                        //                        animateView(number, number.getX(), prevX);
+                            number.setX(prevX);
+                            v.setX(target2);
+                            //
+                            //
+                            Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
 
-                        prevX = target2;
+                            prevX = target2;
 
-                        //                        numbers.remove(index);
-                        //                        numbers.add(1, (Button)v);
-                    }
-                    else if (Math.abs(pointerX - target3) < SNAP_DISTANCE)
-                    {
-                        int buttonIndex = 2;
-//
-//                        //                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
-//
-                        Button number = numbers.get(buttonIndex);
-//                        //                        animateView(number, number.getX(), prevX);
-//
-                        number.setX(prevX);
-                        v.setX(target3);
-//
-                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
+                            //                        numbers.remove(index);
+                            //                        numbers.add(1, (Button)v);
+                        }
+                        else if (Math.abs(pointerX - target3) < SNAP_DISTANCE)
+                        {
+                            int buttonIndex = 2;
+                            //
+                            //                        //                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
+                            //
+                            Button number = numbers.get(buttonIndex);
+                            //                        //                        animateView(number, number.getX(), prevX);
+                            //
+                            number.setX(prevX);
+                            v.setX(target3);
+                            //
+                            Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
 
-                        prevX = target3;
+                            prevX = target3;
 
-                        //                        numbers.remove(index);
-                        //                        numbers.add(2, (Button)v);
-                    }
-                    else if ((target4 - pointerX) < SNAP_DISTANCE || pointerX > target4)
-                    {
-                        int buttonIndex = 3;
-//
-//                        //                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
-//
-                        Button number = numbers.get(buttonIndex);
-//                        //                        animateView(number, number.getX(), prevX);
-                        number.setX(prevX);
-                        v.setX(target4);
-//
-                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
+                            //                        numbers.remove(index);
+                            //                        numbers.add(2, (Button)v);
+                        }
+                        else if ((target4 - pointerX) < SNAP_DISTANCE || pointerX > target4)
+                        {
+                            int buttonIndex = 3;
+                            //
+                            //                        //                        Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
+                            //
+                            Button number = numbers.get(buttonIndex);
+                            //                        //                        animateView(number, number.getX(), prevX);
+                            number.setX(prevX);
+                            v.setX(target4);
+                            //
+                            Collections.swap(numbers, buttonIndex, numbers.indexOf(v));
 
-                        prevX = target4;
+                            prevX = target4;
 
-                        //                        numbers.remove(index);
-                        //                        numbers.add(3, (Button)v);
+                            //                        numbers.remove(index);
+                            //                        numbers.add(3, (Button)v);
+                        }
                     }
 
                     return true;
@@ -286,6 +295,8 @@ public class NumberCrunchActivity extends ActionBarActivity implements OperatorF
                 case MotionEvent.ACTION_UP:
 
                     float currX = v.getX();
+
+                    touching = false;
 
                     if (currX < target2)
                     {
@@ -352,6 +363,7 @@ public class NumberCrunchActivity extends ActionBarActivity implements OperatorF
 
                 case MotionEvent.ACTION_DOWN:
 
+                    touching = true;
                     prevX = v.getX();
 //
 //                    Log.i("prevX", String.valueOf(prevX));
@@ -486,7 +498,9 @@ public class NumberCrunchActivity extends ActionBarActivity implements OperatorF
 
             @Override public void onAnimationEnd(Animation animation)
             {
-                view.setX(end);
+//                view.setX(end);
+//                view.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+//                                                                   ViewGroup.LayoutParams.WRAP_CONTENT));
             }
 
             @Override public void onAnimationRepeat(Animation animation)
